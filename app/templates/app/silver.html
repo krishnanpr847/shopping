@@ -1,0 +1,64 @@
+{% extends 'app/base.html' %} {% load static %} {% block title %}Gold{% endblock title %} {% block main-content %}
+
+<!-- filter starts -->
+<div class="container my-5 mx-1">
+    <div class="row" style="flex-wrap: unset;margin-right: auto;">
+        <div class="col-sm-3">
+            <div class="list-group">
+                <p>Filter By Price</p>
+                <a href="{% url 'silver' %}" class="list-group-item list-group-item-action" aria-current="true">All Gold Jewels</a>
+                <a href="{% url 'silverprice' '100'%}" class="list-group-item list-group-item-action" aria-current="true">0 to 100</a>
+                <a href="{% url 'silverprice' '300' %}" class="list-group-item list-group-item-action" aria-current="true">100 to 300</a>
+                <a href="{% url 'silverprice' '500' %}" class="list-group-item list-group-item-action" aria-current="true">300 to 500</a>
+                <a href="{% url 'silverprice' 'above500' %}" class="list-group-item list-group-item-action" aria-current="true">above 500</a>
+
+            </div>
+
+        </div>
+        <!-- end of filter -->
+        <!-- gold product list -->
+
+        <!-- <div class="col-sm-3 ">
+            {%for product in gold%}
+            <div class="col-sm-4 text-center mb-4">
+                <a href="{% url 'product-detail' product.id %}" class="btn">
+                    <div class="item">
+                        <img src="{{product.product_image.url}}" alt="" height="300" width="250" class="">
+                        <div class="fw-bold">{{product.title}}</div>
+
+                        <div class="fw-bold">{{product.discounted_price}}
+                            <small class="fw-light text-decoration-line-through">{{product.selling_price}}</small>
+                        </div>
+                    </div>
+
+                </a>
+            </div>
+            {%endfor%}
+        </div> -->
+        <div class="row">
+            {%for product in silver%}
+
+            <div class="col-sm-4">
+                <a href="{% url 'product-detail' product.id %}" class="btn">
+                    <div class="item">
+                        <img src="{{product.product_image.url}}" alt="" height="300" width="250" class="">
+                        <div class="fw-bold">{{product.title}}</div>
+
+                        <div class="fw-bold">{{product.discounted_price}}
+                            <small class="fw-light text-decoration-line-through">{{product.selling_price}}</small>
+                        </div>
+                    </div>
+
+                </a>
+            </div>
+            {%endfor%}
+        </div>
+
+
+    </div>
+</div>
+
+
+<!-- end gold product list -->
+
+{% endblock main-content %}
